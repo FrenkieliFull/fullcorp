@@ -52,6 +52,7 @@
     Instascan.Camera.getCameras().then(function (cameras) {
       //取得設備的相機數目
       if (cameras.length > 0) {
+        console.log(cameras.length);
         ///若設備相機數目大於0 則先開啟第0個相機(程式的世界是從第零個開始的)
         scanner.start(cameras[0]);
       } else {
