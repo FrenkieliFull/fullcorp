@@ -11,6 +11,8 @@
 </head>
 
 <body>
+
+  <video id="preview"></video>
   WebRTC 影像測試
   <br />問題：https://ithelp.ithome.com.tw/questions/10192363
   <hr />
@@ -36,7 +38,6 @@
     navigator.mediaDevices.getUserMedia(constraints).
       then(handleSuccess).catch(handleError);
   </script>
-  <video id="preview"></video>
   <!-- 詢問是否允許開啟相機後，會顯示在這個元素裡 -->
   <!-- ---------- -->
   <!-- 以下程式面 -->
