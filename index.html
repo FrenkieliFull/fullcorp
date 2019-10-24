@@ -17,25 +17,25 @@
   <br />問題：https://ithelp.ithome.com.tw/questions/10192363
   <hr />
   <script>
-    'use strict';
+    // 'use strict';
 
-    var constraints = {
-      video: true
-    };
+    // var constraints = {
+    //   video: true
+    // };
 
-    var video = document.getElementById('preview')
+    // var video = document.getElementById('preview')
 
-    function handleSuccess(stream) {
-      window.stream = stream; // only to make stream available to console
-      video.srcObject = stream;
-    }
+    // function handleSuccess(stream) {
+    //   window.stream = stream; // only to make stream available to console
+    //   video.srcObject = stream;
+    // }
 
-    function handleError(error) {
-      console.log('getUserMedia error: ', error);
-    }
+    // function handleError(error) {
+    //   console.log('getUserMedia error: ', error);
+    // }
 
-    navigator.mediaDevices.getUserMedia(constraints).
-      then(handleSuccess).catch(handleError);
+    // navigator.mediaDevices.getUserMedia(constraints).
+    //   then(handleSuccess).catch(handleError);
     let scanner = new Instascan.Scanner({
       video: document.getElementById('preview')
     });
