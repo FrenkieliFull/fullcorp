@@ -9,7 +9,7 @@
   <script type="text/javascript" src="instascan.min.js"></script>
   <!-- 載入instascan.min.js -->
   <style>
-    #preview{
+    #preview {
       width: 100vh;
       height: 100vh;
     }
@@ -47,7 +47,8 @@
 
     scanner.addListener('scan', function (content) {
       console.log(content);
-      alert('content');
+      let url = location.href.split('url=')[1] + 'html';
+      location.href = url + '?gataway=' + content;
     });
     //開始偵聽掃描事件，若有偵聽到印出內容。
 
@@ -56,9 +57,9 @@
       if (cameras.length > 0) {
         // console.log(cameras.length);
         ///若設備相機數目大於0 則先開啟第0個相機(程式的世界是從第零個開始的)
-        if(cameras.length>1){
+        if (cameras.length > 1) {
           scanner.start(cameras[1]);
-        }else{
+        } else {
           scanner.start(cameras[0]);
         }
       } else {
