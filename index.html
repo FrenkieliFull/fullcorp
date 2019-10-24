@@ -8,14 +8,16 @@
   <title>Document</title>
   <script type="text/javascript" src="instascan.min.js"></script>
   <!-- 載入instascan.min.js -->
+  <style>
+    #preview{
+      width: 100vh;
+      height: 100vh;
+    }
+  </style>
 </head>
 
 <body>
-
   <video id="preview"></video>
-  WebRTC 影像測試
-  <br />問題：https://ithelp.ithome.com.tw/questions/10192363
-  <hr />
   <script>
     // 'use strict';
 
@@ -52,9 +54,13 @@
     Instascan.Camera.getCameras().then(function (cameras) {
       //取得設備的相機數目
       if (cameras.length > 0) {
-        console.log(cameras.length);
+        // console.log(cameras.length);
         ///若設備相機數目大於0 則先開啟第0個相機(程式的世界是從第零個開始的)
-        scanner.start(cameras[0]);
+        if(cameras.length>1){
+          scanner.start(cameras[1]);
+        }else{
+          scanner.start(cameras[0]);
+        }
       } else {
         //若設備沒有相機數量則顯示"No cameras found";
         //這裡自行判斷要寫什麼
