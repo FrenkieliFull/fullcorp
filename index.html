@@ -16,15 +16,28 @@
   WebRTC 影像測試
   <br />問題：https://ithelp.ithome.com.tw/questions/10192363
   <hr />
-  <!-- 詢問是否允許開啟相機後，會顯示在這個元素裡 -->
-  <!-- ---------- -->
-  <!-- 以下程式面 -->
-  <script type="text/javascript">
-    const mediaStream = new MediaStream();
-    const video = document.getElementById('preview');
-    video.srcObject = mediaStream;
+  <script>
+    'use strict';
+
+    var constraints = {
+      video: true
+    };
+
+    var video = document.getElementById('preview')
+
+    function handleSuccess(stream) {
+      window.stream = stream; // only to make stream available to console
+      video.srcObject = stream;
+    }
+
+    function handleError(error) {
+      console.log('getUserMedia error: ', error);
+    }
+
+    navigator.mediaDevices.getUserMedia(constraints).
+      then(handleSuccess).catch(handleError);
     let scanner = new Instascan.Scanner({
-      video: video
+      video: document.getElementById('preview')
     });
     // 開啟一個新的掃描
     // 宣告變數scanner，在html<video>標籤id為preview的地方開啟相機預覽。
@@ -32,14 +45,13 @@
 
     scanner.addListener('scan', function (content) {
       console.log(content);
-      
+      alert('content');
     });
     //開始偵聽掃描事件，若有偵聽到印出內容。
 
     Instascan.Camera.getCameras().then(function (cameras) {
       //取得設備的相機數目
       if (cameras.length > 0) {
-        console.log('有近來');
         ///若設備相機數目大於0 則先開啟第0個相機(程式的世界是從第零個開始的)
         scanner.start(cameras[1]);
       } else {
